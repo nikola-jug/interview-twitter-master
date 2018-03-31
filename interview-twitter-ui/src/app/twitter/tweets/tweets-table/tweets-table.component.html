@@ -2,14 +2,19 @@
   <thead>
   <tr>
     <th>Id</th>
-    <th>Author</th>
+    <th>Author (Full name)</th>
     <th>Content</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let tweet of tweets">
     <td>{{tweet.id}}</td>
-    <td><a routerLink="/app/tweets/{{tweet.author}}">{{tweet.author}}</a></td>
+    <td>
+      <a routerLink="/app/tweets/{{tweet.author}}">
+        {{tweet.author}}
+        <span *ngIf="tweet.authorFullName">({{tweet.authorFullName}})</span>
+      </a>
+    </td>
     <td>{{tweet.content}}</td>
   </tr>
   </tbody>
