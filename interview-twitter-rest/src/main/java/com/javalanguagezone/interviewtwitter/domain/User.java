@@ -29,10 +29,8 @@ public class User implements UserDetails {
   @Column(unique = true)
   private String username;
 
-  @Column
   private String firstName;
 
-  @Column
   private String lastName;
 
   @JsonIgnore
@@ -96,21 +94,5 @@ public class User implements UserDetails {
       return firstName;
     }
     return null;
-  }
-
-  public String getFirstName() {
-    return firstName;
-  }
-
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
-
-  public String getLastName() {
-    return lastName;
-  }
-
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
   }
 }
