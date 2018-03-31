@@ -2,14 +2,14 @@
   <thead>
   <tr>
     <th>Id</th>
-    <th>Author</th>
+    <th>Author (Full name)</th>
     <th>Content</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let tweet of tweets">
     <td>{{tweet.id}}</td>
-    <td>{{tweet.author}}</td>
+    <td>{{tweet.author}} <span *ngIf="tweet.authorFullName">({{tweet.authorFullName}})</span></td>
     <td>{{tweet.content}}</td>
   </tr>
   </tbody>
