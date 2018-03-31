@@ -29,6 +29,12 @@ public class User implements UserDetails {
   @Column(unique = true)
   private String username;
 
+  @Column
+  private String firstName;
+
+  @Column
+  private String lastName;
+
   @JsonIgnore
   @ManyToMany
   private Set<User> following = new HashSet<>();
@@ -43,6 +49,13 @@ public class User implements UserDetails {
   public User(String username, String password) {
     this.username = username;
     this.password = password;
+  }
+
+  public User(String username, String password, String firstName, String lastName) {
+    this.username = username;
+    this.password = password;
+    this.firstName = firstName;
+    this.lastName = lastName;
   }
 
   @Override
@@ -73,5 +86,31 @@ public class User implements UserDetails {
 
   public void addFollowing(User... users) {
     following.addAll(Arrays.asList(users));
+  }
+
+  public String getFullName() {
+    if (firstName != null) {
+      if (lastName != null) {
+        return firstName + " " + lastName;
+      }
+      return firstName;
+    }
+    return null;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
   }
 }
